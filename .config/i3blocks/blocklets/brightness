@@ -1,0 +1,18 @@
+#!/bin/bash
+
+percent=$(~/.config/i3/scripts/brightness)
+
+if [[ "${percent%%%}" -le 0 ]]; then
+  exit
+fi
+
+SS_SEG=$(xset q | grep -A2 "Screen Saver" | grep "timeout" | awk '{print $2}')
+
+color=""
+if [ "$SS_SEG" == "0" ]; then
+	color="#FF0000"
+fi
+
+echo "${percent}"
+echo "${percent}"
+echo "${color}"
